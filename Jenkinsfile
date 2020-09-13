@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Lint python'){
             steps{
-                pylint --disable=R,C,W1203,W1309 app.py
+                pylint app.py
             }
         }
         stage('Build Docker'){
