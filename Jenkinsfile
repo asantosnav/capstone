@@ -8,10 +8,7 @@ pipeline {
         }
         stage('Build Docker'){
             steps{
-                script{
-                    docker build https://github.com/asantosnav/capstone.git
-                }
-                
+                docker build https://github.com/asantosnav/capstone.git
             }        
         }
 		stage('Push image'){
