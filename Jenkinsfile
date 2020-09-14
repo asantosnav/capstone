@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build Docker'){
             steps{
-                sh 'docker build https://github.com/asantosnav/capstone.git'
+                sh '''docker build https://github.com/asantosnav/capstone.git'''
             }        
         }
 		stage('Push image'){
