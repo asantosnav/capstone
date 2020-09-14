@@ -13,10 +13,12 @@ pipeline {
         }
 		stage('Push image'){
             steps{
-                dockerpath=asantosnav/capstone
-				cat ~/docker_password.txt | docker login --username asantosnav --password-stdin
-				docker tag api $dockerpath
-				docker push $dockerpath
+                sh '''
+                    dockerpath=asantosnav/capstone
+				    cat ~/docker_password.txt | docker login --username asantosnav --password-stdin
+				    docker tag api $dockerpath
+				    docker push $dockerpath
+                '''
 				
             }        
         }        
