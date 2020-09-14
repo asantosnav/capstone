@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages{
-        stage('Lint python'){
+        stage('Lint HTML'){
             steps{
                 sh 'tidy -q -e *.html'
             }
