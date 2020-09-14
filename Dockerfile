@@ -1,12 +1,9 @@
-FROM apache
+FROM nginx:alpine
+
 
 ## Step 1:
-# Create a working directory
-WORKDIR /app
+# Copy source code to working directory
+COPY index.html /usr/share/nginx/html
 
 ## Step 2:
-# Copy source code to working directory
-COPY index.html /var/www/html
-
-## Step 3:
 EXPOSE 80
