@@ -3,12 +3,12 @@ pipeline {
     stages{
         stage('Lint python'){
             steps{
-                pylint app.py
+                sh 'tidy -q -e *.html'
             }
         }
         stage('Build Docker'){
             steps{
-                docker build https://github.com/asantosnav/capstone.git
+                sh 'docker build https://github.com/asantosnav/capstone.git'
             }        
         }
 		stage('Push image'){
