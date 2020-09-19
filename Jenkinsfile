@@ -34,7 +34,9 @@ pipeline {
         }
         stage ('Deploy image'){
             steps{
-                sh 'kubectl set image -f ./update-controller.yaml'
+                withAWS(region: 'us-west-2', credentials: 'aws-static'){
+                    sh 'kubectl set image -f ./update-controller.yaml'
+                }
             }
         }        
     }
