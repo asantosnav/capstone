@@ -34,7 +34,7 @@ pipeline {
         }
         stage ('Deploy image'){
             steps{
-                sh 'kubectl set image -f ./update-controller.json'
+                sh 'kubectl set image -f update-controller.json'
             }
         }        
     }
