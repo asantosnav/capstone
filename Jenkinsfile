@@ -15,7 +15,7 @@ pipeline {
             steps{
                 sh '''
                     dockerpath=asantosnav/capstone
-				    cat ~/docker_password.txt | docker login --username asantosnav --password-stdin
+				    cat ~/docker_password_2.txt | docker login --username asantosnav --password-stdin
 				    docker tag cap $dockerpath
 				    docker push $dockerpath
                 '''
