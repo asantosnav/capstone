@@ -21,6 +21,21 @@ pipeline {
                 '''
 				
             }        
+        }
+        stage('Point to cluster'){
+            steps{
+                withAWS(region: 'us-west-2', credentials: 'aws-static'){
+                    sh '''
+                        aws eks --region us-west-2 update-kubeconfig --name cluster-capstone
+                    '''
+
+                }
+            }
+        }
+        stage ('Deploy image'){
+            steps{
+                sh kubectl set image -f ./update-controller.json
+            }
         }        
     }
 }
