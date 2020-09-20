@@ -27,6 +27,7 @@ pipeline {
                 withAWS(region: 'us-west-2', credentials: 'aws-static'){
                     sh '''
                         aws eks --region us-west-2 update-kubeconfig --name cluster-capstone
+                        kubectl config use-context arn:aws:eks:us-west-2:113497486547:cluster/cluster-capstone
                     '''
 
                 }
@@ -35,7 +36,10 @@ pipeline {
         stage ('Deploy image'){
             steps{
                 withAWS(region: 'us-west-2', credentials: 'aws-static'){
-                    sh 'kubectl set image deployments capstone= asantosnav/capstone:latest'
+                    sh '''
+                        kubectl set image deployments/capstone-rolling-update nginx=asantosnav/capstone
+                        kubectl apply -f deployment.yml
+                    '''
                 }
             }
         }        
