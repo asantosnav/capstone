@@ -35,8 +35,7 @@ pipeline {
         stage ('Deploy image'){
             steps{
                 withAWS(region: 'us-west-2', credentials: 'aws-static'){
-                    sh 'aws eks --region us-west-2 update-kubeconfig --name cluster-capstone'
-                    sh 'kubectl set image -f ./update-controller.yaml'
+                    sh 'sudo kubectl set image -f ./update-controller.yaml'
                 }
             }
         }        
