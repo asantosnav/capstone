@@ -35,7 +35,7 @@ pipeline {
         stage ('Deploy image'){
             steps{
                 withAWS(region: 'us-west-2', credentials: 'aws-static'){
-                    sh 'kubectl apply -f update-controller.yaml'
+                    sh 'kubectl set image deployments capstone= asantosnav/capstone:latest'
                 }
             }
         }        
