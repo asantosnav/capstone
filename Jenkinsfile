@@ -37,8 +37,9 @@ pipeline {
             steps{
                 withAWS(region: 'us-west-2', credentials: 'aws-superuser'){
                     sh '''
-                        kubectl set image deployment/capstone-rolling-update capstone=asantosnav/capstone:latest
+                        kubectl set image deployment/capstone-rolling-update capstone=asantosnav/capstone:latest --record
                         kubectl get nodes
+                        kubectl rollout status capstone-rolling-update
                         kubectl get deployment
                         kubectl get pod -o wide
                         kubectl get service/capstone-expose
