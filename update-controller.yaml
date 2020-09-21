@@ -18,13 +18,23 @@ spec:
         image: asantosnav/capstone
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-          path: /
-          port: 80
   strategy:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
     type: RollingUpdate
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone-expose
+  labels:
+    app: capstone
+spec:
+  type: LoadBalancer
+  selector:
+    app: capstone
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
