@@ -38,6 +38,7 @@ pipeline {
                 withAWS(region: 'us-west-2', credentials: 'aws-superuser'){
                     sh '''
                         kubectl set image deployments/capstone-rolling-update capstone=asantosnav/capstone:latest
+                        kubectl apply -f update-controller.yaml
                         kubectl get nodes
                         kubectl get deployment
                         kubectl get pod -o wide
