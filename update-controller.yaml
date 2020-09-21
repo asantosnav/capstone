@@ -14,7 +14,7 @@ spec:
         role: rolling-update
     spec:
       containers:
-      - name: myContainer
+      - name: mycontainer
         image: asantosnav/capstone
         ports:
         - containerPort: 80
