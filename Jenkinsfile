@@ -37,8 +37,8 @@ pipeline {
             steps{
                 withAWS(region: 'us-west-2', credentials: 'aws-superuser'){
                     sh '''
-                        kubectl apply -f update-controller.yaml
                         kubectl set image deployments/capstone-rolling-update capstone=asantosnav/capstone
+                        kubectl apply -f update-controller.yaml
                     '''
                 }
             }
