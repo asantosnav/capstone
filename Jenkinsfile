@@ -44,6 +44,12 @@ pipeline {
                         sh 'kubectl get service/capstone-expose'
                 }
             }
+        }
+        stage('Pruning') {
+            steps{
+                echo "Pruning..."
+                sh "docker system prune"
+            }
         }        
     }
 }
